@@ -28,3 +28,13 @@ class User(db.Model):
     def check_password(self,raw_password):
         result = check_password_hash(self.password,raw_password)
         return result
+
+    def to_json(self):
+        json_user = {
+            'id':self.id,
+            'username':self.username,
+            'phone':self.phone,
+            'age':self.age
+
+        }
+        return json_user

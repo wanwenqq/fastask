@@ -1,7 +1,7 @@
 from flask import Flask,make_response,request
 import config
 
-from apps.v1 import data_bp
+from apps.v1 import data_bp,user_bp
 from apps.ips import ips
 from apps.auths import auths
 
@@ -24,6 +24,7 @@ app.config.from_object(config)
 db.init_app(app)
 # 4.注册蓝图
 app.register_blueprint(data_bp)
+app.register_blueprint(user_bp)
 # 5.自定义异常处理
 app.abort = my_abort
 
