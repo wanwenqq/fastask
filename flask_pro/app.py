@@ -4,14 +4,14 @@ import config
 from apps.v1 import data_bp,user_bp
 from apps.ips import ips
 from apps.auths import auths
-
+from utils.slogging import logger
 from apps.respone import my_abort,make_respone
 
 from exts import db 
 
 
 
-
+logger.info('初始化flask')
 #创建一个Flask对象，传递__name__参数
 #__name__参数作用
 #1. 可以规定模板和静态文件的查找路径
@@ -19,16 +19,21 @@ from exts import db
 # 1.应用初始化
 app = Flask(__name__)
 # 2.读取配置文件
+logger.info('读取配置文件')
 app.config.from_object(config)
 # 3.初始化数据库
+logger.info('初始化数据库')
 db.init_app(app)
 # 4.注册蓝图
+logger.info('注册蓝图')
 app.register_blueprint(data_bp)
 app.register_blueprint(user_bp)
 # 5.自定义异常处理
+logger.info('注册自定义异常处理')
 app.abort = my_abort
 
 # 6.请求前处理逻辑
+logger.info('注册请求前处理逻辑')
 @app.before_request
 def print_request_info():
     # print("请求地址：" + str(request.path))
@@ -72,6 +77,7 @@ def filter_request(request):
 
 
 # 7.请求后处理逻辑
+logger.info('注册请求后处理逻辑')
 # 跨域支持
 def after_request(resp):
     # //允许所有来源访问
@@ -88,7 +94,7 @@ def after_request(resp):
 app.after_request(after_request)
 
 
-
+logger.info('完成flask初始化，开始工作')
 #@app.route是一个装饰器
 #@app.route('/')就是将url中的/映射到hello_world这个视图函数上面
 #当你访问网站/目录的时候，会执行hello_world函数，然后这个函数的返回值给浏览器
