@@ -16,8 +16,8 @@
         - python manage.py db migrate
         - python manage.py db upgrade
         - python manage.py 函数名 参数1 参数2 ...
-3.
-4.
+3. 配置uwsgi和nginx，见[config/README.MD](config/README.MD)
+4. (**linux**)安装supervisor,管理uwsgi:pip install supervisor
 5.
 6.
 7.

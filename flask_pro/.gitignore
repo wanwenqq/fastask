@@ -6,3 +6,6 @@ slog.log
 config/uwsgi.sock
 config/uwsgi.status
 config/uwsgi.pid
+log/
+supervisord.log
+supervisord.pid
