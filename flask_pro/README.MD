@@ -1,3 +1,12 @@
+# linux环境搭建
+1. 修改系统默认源为阿里云
+   - 备份：cp /etc/apt/sources.list /etc/apt/sources.list.bak
+   - 在此添加阿里源：vi /etc/apt/sources.list
+2. 源码安装python3,pip
+3. 安装mysql并配置mysql
+4. 安装redis
+
+
 # python flask 
 ---
 1. **基础类库**
@@ -17,7 +26,7 @@
         - python manage.py db upgrade
         - python manage.py 函数名 参数1 参数2 ...
 3. 配置uwsgi和nginx，见[config/README.MD](config/README.MD)
-4. (**linux**)安装supervisor,管理uwsgi:pip install supervisor
-5.
+4. (**linux**)安装supervisor,管理uwsgi:pip install supervisor,配置见[config](config/supervisor.conf)
+5. 
 6.
 7.
