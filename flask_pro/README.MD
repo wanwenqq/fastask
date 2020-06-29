@@ -5,6 +5,7 @@
 2. 源码安装python3,pip
 3. 安装mysql并配置mysql
 4. 安装redis
+5. pip freeze > requirements.txt 换成pipreqs --force ./ 只取当前项目lib
 
 ---
 centos 7 不同ubuntu的地方
