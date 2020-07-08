@@ -1,7 +1,7 @@
 from flask import Flask,make_response,request
 import config
 
-from apps.v1 import data_bp,user_bp
+from apps.v1 import data_bp,user_bp,swtc_bp
 from apps.ips import ips
 from apps.auths import auths
 from utils.slogging import logger
@@ -28,6 +28,7 @@ db.init_app(app)
 logger.info('注册蓝图')
 app.register_blueprint(data_bp)
 app.register_blueprint(user_bp)
+app.register_blueprint(swtc_bp)
 # 5.自定义异常处理
 logger.info('注册自定义异常处理')
 app.abort = my_abort

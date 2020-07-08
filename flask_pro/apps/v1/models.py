@@ -38,3 +38,27 @@ class User(db.Model):
 
         }
         return json_user
+
+
+class Swtc(db.Model):
+    __tablename__ = 'swtctop_ex'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    address = db.Column(db.String(256), nullable=False)
+    swtc = db.Column(db.Numeric, nullable=False)
+    cnt = db.Column(db.Numeric,nullable=True)
+    hjt = db.Column(db.Numeric,nullable=True)
+    jcc = db.Column(db.Numeric,nullable=True)
+    vcc = db.Column(db.Numeric,nullable=True)
+
+
+    def to_json(self):
+        json_swtc = {
+            'id':self.id,
+            'address':self.address,
+            'swtc':self.swtc,
+            'cnt':self.cnt,
+            'hjt':self.hjt,
+            'jcc':self.jcc,
+            'vcc':self.vcc
+        }
+        return json_swtc

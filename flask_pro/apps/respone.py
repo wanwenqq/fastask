@@ -1,5 +1,7 @@
 from flask import abort
 from flask import  jsonify
+import simplejson
+
 
 class ResponseCode:
     SUCCESS = 200
@@ -8,11 +10,17 @@ class ResponseCode:
 
 
 def make_respone(data=None, status=ResponseCode.SUCCESS,message=ResponseCode.MESSAGE ):
-    return jsonify({
+    # return jsonify({
+    #     'message': message,
+    #     'status': status,
+    #     'data': data
+    # })
+    list_json = {
         'message': message,
         'status': status,
         'data': data
-    })
+    }
+    return simplejson.dumps(list_json, ensure_ascii=False)
 
 
 def my_abort(http_status_code, *args, **kwargs):
