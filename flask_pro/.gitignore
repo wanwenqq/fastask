@@ -9,3 +9,4 @@ config/uwsgi.pid
 log/
 supervisord.log
 supervisord.pid
+config.py
