@@ -5,8 +5,8 @@ DEBUG = True
 #MySQL Database
 HOST = '127.0.0.1'
 PORT = '3306'
-USERNAME = 'debian-sys-maint'
-PASSWORD = 'ftTK7jX41rjmp9BX'
+USERNAME = 'root'
+PASSWORD = '53358861@Qq'
 DATABASE = 'flaskori'
 
 DB_URI = 'mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset-utf8'.format(username=USERNAME,
