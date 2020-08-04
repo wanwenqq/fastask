@@ -1,11 +1,12 @@
 # 创建流程和步骤 #
 
-1. 初始化工作
+1. **初始化工作**
 
    mkdir webpack-demo && cd webpack-demo   
    npm init -y    
    npm install webpack webpack-cli --save-dev   
-2. 创建webpack.config.js和.gitignore文件
+
+2. **创建webpack.config.js和.gitignore文件**
 
 3. 在webpack.config.js中定义entry和output,并根据entry中的app创建js入口文件,如'./src/index.js'
 
@@ -24,13 +25,13 @@
    npm install --save-dev webpack-dev-server   
    在webpack.config.js中新增devServer,在webpack.json中新增 start 脚本
 
-7. 处理css,配置webpack.config.js中的module
+7. 处理资源类(css,图片，字体，数据文件等),配置webpack.config.js中的module
 
    npm i style-loader css-loader less less-loader postcss-loader autoprefixer --save-dev
 
    npm i mini-css-extract-plugin optimize-css-assets-webpack-plugin  --save-dev
 
-   npm install --save-dev file-loader
+   npm install --save-dev file-loader url-loader
 
    npm install --save-dev sass-loader node-sass  //可以不需要
 
@@ -57,7 +58,7 @@
 
 11. 安装 mint-ui
 
-   npm install mint-ui -S
+   npm i vant -S
 
 12. 安装axio
 
@@ -67,6 +68,10 @@
 
    npm i @babel/polyfill --save-dev 
 
-14. 开始vue+mint开发
+14. **开始vue+vant开发**
 
-    1. 
+   1. 安装babel插件
+
+         npm i babel-plugin-import --save-dev
+
+   2. 新增babel.config.js,参考[vant引入组件](https://youzan.github.io/vant/?source=vuejsorg#/zh-CN/quickstart)

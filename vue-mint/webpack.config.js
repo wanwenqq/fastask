@@ -47,7 +47,8 @@ module.exports = {
         hot: true
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.vue$/,
                 loader: 'vue-loader'
             },
@@ -75,8 +76,11 @@ module.exports = {
                 use: [{
                     loader:'url-loader',
                     options:{
-                        limit:8192,
-                        esModule: false
+                        esModule: false, // 不加的话会有这种情况 img属性src="[object Module]"
+                        limit: 1024 * 10, // 当大于10kb时候，将文件打包到publicPath中 
+                        outputPath: 'images', // 将文件打包到哪里
+                        publicPath: 'images/',
+                        name: '[name].[hash:8].[ext]'
                     }
                 }
                 ]
