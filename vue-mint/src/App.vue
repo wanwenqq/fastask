@@ -9,7 +9,7 @@
         :badge="(item.badge)"
       >
         <span>{{item.title}}</span>
-        <img slot="icon" slot-scope="props" :src="props.active ? item.normal : item.active" />
+        <img slot="icon" slot-scope="props" :src="props.active ? item.active : item.normal" />
       </van-tabbar-item>
     </van-tabbar>
   </div>
@@ -17,8 +17,6 @@
 
 <script>
 import { Tabbar, TabbarItem } from "vant";
-import normal from "./assets/dis-normal.png";
-import active from "./assets/dis-active.png";
 export default {
   name: "app",
   components: {
@@ -34,29 +32,29 @@ export default {
           name: "/home",
           title: "首页",
           badge: "",
-          normal: require('./assets/dis-normal.png'),
-          active: require('./assets/dis-active.png'),
+          normal: require('./assets/home-normal.png'),
+          active: require('./assets/home-active.png'),
         },
         {
-          name: "/info",
-          title: "新闻",
+          name: "/data",
+          title: "数据",
           badge: 9,
-          normal: normal,
-          active: active,
+          normal: require('./assets/data-normal.png'),
+          active: require('./assets/data-active.png'),
         },
         {
           name: "/discory",
           title: "发现",
           badge: 3,
-          normal: normal,
-          active: active,
+          normal: require('./assets/dis-normal.png'),
+          active: require('./assets/dis-active.png'),
         },
         {
           name: "/user",
           title: "我的",
           badge: 4,
-          normal: normal,
-          active: active,
+          normal: require('./assets/user-normal.png'),
+          active: require('./assets/user-active.png'),
         },
       ],
     };
