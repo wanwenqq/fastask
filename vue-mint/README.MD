@@ -70,8 +70,9 @@
 
 14. **开始vue+vant开发**
 
-   1. 安装babel插件
+    1. 安装babel插件
 
          npm i babel-plugin-import --save-dev
 
-   2. 新增babel.config.js,参考[vant引入组件](https://youzan.github.io/vant/?source=vuejsorg#/zh-CN/quickstart)
+    2. 新增babel.config.js,参考[vant引入组件](https://youzan.github.io/vant/?source=vuejsorg#/zh-CN/quickstart)
+    3. npm install --save @swtc/lib 
