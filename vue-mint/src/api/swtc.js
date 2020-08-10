@@ -15,10 +15,10 @@ const swtcAPI = {
         return httpserver.get(`api/static/config/jc_config.json`);
     },
 
-    getDepth(param){
-        console.log(param)
-        return httpserver.get('https://explorer.jccdex.cn/wallet/trans/:uuid?p=0&s=10&t=Receive,Send&w=jNC1n9WeniAErRAatYwarRUPCybozPqioW');
-        // return httpserver.get('https://explorer.jccdex.cn/wallet/trans/:uuid?',param);
+    getDepth(params){
+        // console.log(params)
+        // return httpserver.get('https://explorer.jccdex.cn/wallet/trans/:uuid?p=0&s=10&t=Receive,Send&w=jNC1n9WeniAErRAatYwarRUPCybozPqioW');
+        return httpserver.get('https://explorer.jccdex.cn/wallet/trans/:uuid?${p}/${s}/${t}/${w}',{params:params});
     }
 }
 

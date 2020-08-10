@@ -3,7 +3,6 @@ import axios from 'axios'
 const httpserver = axios.create();
 //设置请求超时时间
 httpserver.defaults.timeout = 1000 * 10;
-httpserver.defaults.withCredentials = false;
 // 设置post请求头
 httpserver.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 
@@ -30,16 +29,7 @@ httpserver.interceptors.response.use(function (response) {
         if (code == 200) {
             return response;
         } else {
-            switch (code) {
-                case 401:
-                    break;
-                case 403:
-                    break;
-                case 404:
-                    break;
-                default:
-                    Promise.reject(response)
-            }
+            errorHandle(code,'')
         }
     },
     function (error) {
@@ -62,6 +52,7 @@ const errorHandle = (status, msg) => {
         default:
             // 其他未处理的问题
             console.log(msg)
+            Promise.reject(response)
     }
 }
 

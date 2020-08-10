@@ -72,8 +72,9 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     // MiniCssExtractPlugin.loader,
+                    'style-loader',
                     'css-loader', // 解析 @import这种语法的
                     'postcss-loader',
                     'less-loader' // 把less转变为css
