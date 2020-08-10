@@ -44,7 +44,15 @@ module.exports = {
     ],
     devServer: {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        proxy: {
+            '/api': {
+              target: 'https://jccdex.cn/',
+              pathRewrite: {'^/api' : ''},
+              changeOrigin: true,     // target是域名的话，需要这个参数，
+              secure: false,          // 设置支持https协议的代理
+            },
+        }
     },
     module: {
         rules: [

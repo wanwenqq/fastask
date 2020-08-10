@@ -3,6 +3,7 @@ import axios from 'axios'
 const httpserver = axios.create();
 //设置请求超时时间
 httpserver.defaults.timeout = 1000 * 10;
+httpserver.defaults.withCredentials = false;
 // 设置post请求头
 httpserver.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
 

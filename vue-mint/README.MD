@@ -76,3 +76,4 @@
 
     2. 新增babel.config.js,参考[vant引入组件](https://youzan.github.io/vant/?source=vuejsorg#/zh-CN/quickstart)
     3. npm install --save @swtc/lib 
+    4. webpack.config.js中的devServer中配置proxy,解决跨域问题

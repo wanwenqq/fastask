@@ -17,7 +17,6 @@ var Remote = jlib.Remote;
 // });
 // 生产环境
 var remote = new Remote();
-
 import { Button } from "vant";
 
 export default {
@@ -43,7 +42,7 @@ export default {
         .connectPromise()
         .then(async () => {
           let options = {
-            limit: 5,
+            limit: 10,
             pays: remote.makeCurrency(),
             gets: remote.makeCurrency("CNY"),
           };

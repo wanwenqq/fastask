@@ -59,11 +59,18 @@ export default {
       ],
     };
   },
+  created() {
+    
+  },
+  mounted() {
+    
+  },
   methods: {
     onChange(index) {
       this.tabbars[index].badge = "";
       console.log("当前选中的是:" + index);
     },
+
   },
 };
 </script>
