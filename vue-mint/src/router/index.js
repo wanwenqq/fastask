@@ -8,44 +8,58 @@ VueRouter.prototype.push = function push(location) {
 }
 
 
-import Home from '../App.vue'
+import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
+        redirect: '/main', 
+    },
+    {
+        path: '/',
         name: 'home',
-        component: Home,
-        redirect: '/home',
+        component: Home, 
         children: [
             {
-                path: '/home',
-                name: 'home',
-                component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+                path: '/main',
+                name: 'main',
+                component: () => import(/* webpackChunkName: "list" */ '../views/Main.vue')
             },
             {
                 path: '/data',
                 name: 'data',
-                component: () => import(/* webpackChunkName: "home" */ '../views/Data.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/Data.vue')
             },
             {
                 path: '/discory',
                 name: 'discory',
-                component: () => import(/* webpackChunkName: "home" */ '../views/Discory.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/Discory.vue')
             },
             {
                 path: '/user',
                 name: 'user',
-                component: () => import(/* webpackChunkName: "home" */ '../views/User.vue')
-            }
-        ]
-    }
+                component: () => import(/* webpackChunkName: "list" */ '../views/User.vue')
+            },
+        ],
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: () => import(/* webpackChunkName: "home" */ '../views/Login.vue')
+    },
+    {
+        path: '*',
+        redirect: '/404'
+      }
+    
+    
 ]
 
 const router = new VueRouter({
     mode: 'history',
     linkExactActiveClass: 'active', //
     routes
-  })
-  
-  export default router
+})
+
+export default router

@@ -1,58 +1,81 @@
 <template>
   <div>
-    <van-button type="primary" @click="onCreateSWTC()">创建</van-button>
-    <van-button type="primary" @click="onrequestOrderBook()">挂单列表</van-button>
+     <!-- <van-button type="primary" @click="goLogin()">登录</van-button> -->
+    <router-view />
+    <van-tabbar v-model="active" @change="onChange">
+      <van-tabbar-item
+        v-for="(item,index) in tabbars"
+        :key="index"
+        :to="(item.name)"
+        :badge="(item.badge)"
+      >
+        <span>{{item.title}}</span>
+        <img slot="icon" slot-scope="props" :src="props.active ? item.active : item.normal" />
+      </van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
-//创建Wallet对象
-var jlib = require("@swtc/lib");
-var Wallet = jlib.Wallet;
-var Remote = jlib.Remote;
-//测试环境
-// var remote = new Remote({
-//   server: "ws://ts5.jingtum.com:5030",
-//   issuer: "jBciDE8Q3uJjf111VeiUNM775AMKHEbBLS",
-// });
-// 生产环境
-var remote = new Remote();
-import { Button } from "vant";
-
+import { Tabbar, TabbarItem,Button } from "vant";
 export default {
-  name: "home",
+  name: "app",
   components: {
-    [Button.name]: Button,
+    [Tabbar.name]: Tabbar,
+    [TabbarItem.name]: TabbarItem,
+     [Button.name]: Button,
   },
   data() {
     return {
-      title: "home",
-      address: "",
+      title: "app",
+      active: 0,
+      tabbars: [
+        {
+          name: "/main",
+          title: "首页",
+          badge: "",
+          normal: require('../assets/home-normal.png'),
+          active: require('../assets/home-active.png'),
+        },
+        {
+          name: "/data",
+          title: "数据",
+          badge: 9,
+          normal: require('../assets/data-normal.png'),
+          active: require('../assets/data-active.png'),
+        },
+        {
+          name: "/discory",
+          title: "发现",
+          badge: 3,
+          normal: require('../assets/dis-normal.png'),
+          active: require('../assets/dis-active.png'),
+        },
+        {
+          name: "/user",
+          title: "我的",
+          badge: 4,
+          normal: require('../assets/user-normal.png'),
+          active: require('../assets/user-active.png'),
+        },
+      ],
     };
   },
-  mounted() {},
+  created() {
+    
+  },
+  mounted() {
+    
+  },
   methods: {
-    onCreateSWTC() {
-      var w1 = Wallet.generate();
-      this.address = w1["address"];
-      console.log(w1["address"]);
+    onChange(index) {
+      this.tabbars[index].badge = "";
+      console.log("当前选中的是:" + index);
     },
-    onrequestOrderBook() {
-      remote
-        .connectPromise()
-        .then(async () => {
-          let options = {
-            limit: 10,
-            pays: remote.makeCurrency(),
-            gets: remote.makeCurrency("CNY"),
-          };
-          let req = remote.requestOrderBook(options);
-          let response = await req.submitPromise();
-          console.log(response);
-          remote.disconnect();
-        })
-        .catch(console.error);
-    },
+    goLogin(){
+      this.$router.push('/login')
+    }
+
   },
 };
 </script>

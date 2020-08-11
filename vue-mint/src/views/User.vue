@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="user">
     <van-button type="primary" @click="onGetconfig()">获取服务器列表</van-button>
     <van-button type="primary" @click="onGetdepth()">获取尝试</van-button>
   </div>
