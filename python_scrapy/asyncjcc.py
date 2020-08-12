@@ -7,6 +7,12 @@ import json
 import time
 import datetime
 import pymysql
+import configparser
+import os
+
+
+
+
 '''
 # https://github.com/JCCDex/jcc_server_doc/blob/master/README.md
 # 从上面的接口中获取服务器列表 
@@ -23,6 +29,9 @@ import pymysql
 # 接口路由中以/info开头的请调用infoHosts列表中服务器
 # 为了减轻单个服务器负载，请用轮询机制分别访问列表中每台服务器
 '''
+
+# 读取的配置文件
+config = {}
 
 def get_jcc_website():
     url = 'https://jccdex.cn/static/config/jc_config.json'
@@ -49,7 +58,7 @@ async def main():
 class jccitem(object):
     def __init__(self):
         # 建立连接
-        self.conn = pymysql.connect('localhost','root','12345678','flaskori')  # 有中文要存入数据库的话要加charset='utf8'
+        self.conn = pymysql.connect(config['host'],config['username'],config['password'],config['database'])  # 有中文要存入数据库的话要加charset='utf8'
         # 创建游标
         self.cursor = self.conn.cursor()
     def process_item(self,item,type):
@@ -71,7 +80,37 @@ class jccitem(object):
 
 
 if __name__ == '__main__':
+    cf = configparser.ConfigParser()
+    #获取当前的绝对路径
+    current_path = os.path.abspath(__file__)
+    # print(current_path)
+    #当前文件的目录
+    now_cig = os.path.dirname(current_path)
+    #拼接配置文件路径
+    con_cig = os.path.join(now_cig + "/config.ini")
+    #读取配置文件
+    cf.read(con_cig)
+    #打印配置文件里面section名为"people"里面的potions
+    # config = cf.options(section='mysql')
+    config['host'] = cf.get('mysql','host')
+    config['port'] = cf.get('mysql','port')
+    config['username'] = cf.get('mysql','username')
+    config['password'] = cf.get('mysql','password')
+    config['database'] = cf.get('mysql','database')
+    # print(config)
+    # print(cf.options(section='mysql'))
+    #打印配置文件里面section里面的某个potions的value
+    # print(cf.get('mysql','database'))
+    #加添section
+    # cf.add_section('cc')
+    # #设置指定section的key=value
+    # cf.set('cc','aa','bb')
+    # print(cf.options(section='cc'))
+
+
     asyncio.run(main())
+
+    
     # get_jcc_website()
 
 
