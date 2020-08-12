@@ -49,7 +49,7 @@ async def main():
 class jccitem(object):
     def __init__(self):
         # 建立连接
-        self.conn = pymysql.connect('localhost','root','53358861@Qq','flaskori')  # 有中文要存入数据库的话要加charset='utf8'
+        self.conn = pymysql.connect('localhost','root','12345678','flaskori')  # 有中文要存入数据库的话要加charset='utf8'
         # 创建游标
         self.cursor = self.conn.cursor()
     def process_item(self,item,type):
