@@ -1,6 +1,5 @@
 <template>
   <div>
-     <!-- <van-button type="primary" @click="goLogin()">登录</van-button> -->
     <router-view />
     <van-tabbar v-model="active" @change="onChange">
       <van-tabbar-item
@@ -72,9 +71,6 @@ export default {
       this.tabbars[index].badge = "";
       console.log("当前选中的是:" + index);
     },
-    goLogin(){
-      this.$router.push('/login')
-    }
 
   },
 };

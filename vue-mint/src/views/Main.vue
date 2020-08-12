@@ -1,46 +1,48 @@
 <template>
-  <div>
-    <van-button type="primary" @click="onCreateSWTC()">创建</van-button>
-    <van-button type="primary" @click="onrequestOrderBook()">挂单列表</van-button>
+  <div class="main">
+    <div class="main-swipe">
+      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+        <van-swipe-item>1</van-swipe-item>
+        <van-swipe-item>2</van-swipe-item>
+        <van-swipe-item>3</van-swipe-item>
+        <van-swipe-item>4</van-swipe-item>
+      </van-swipe>
+    </div>
+    <Textitem></Textitem>
+    <van-divider />
+    <Orderitem> </Orderitem>
   </div>
 </template>
 
-<script>
-//创建Wallet对象
-var jlib = require("@swtc/lib");
-var Wallet = jlib.Wallet;
-var Remote = jlib.Remote;
-//测试环境
-// var remote = new Remote({
-//   server: "ws://ts5.jingtum.com:5030",
-//   issuer: "jBciDE8Q3uJjf111VeiUNM775AMKHEbBLS",
-// });
-// 生产环境
-var remote = new Remote();
-import { Button } from "vant";
+<script type="text/javascript">
+import { Swipe, SwipeItem, Divider  } from "vant";
+import Textitem from './components/Textitem.vue'
+import Orderitem from './components/Orderitem.vue'
 
 export default {
   name: "home",
   components: {
-    [Button.name]: Button,
+    [Swipe.name]: Swipe,
+    [SwipeItem.name]: SwipeItem,
+    [Divider.name]: Divider,
+    Textitem,
+    Orderitem,
   },
   data() {
     return {
       title: "home",
       address: "",
+      noticehot: "在代码阅读过程中人们说脏话的频率是衡量",
     };
   },
   mounted() {},
   methods: {
     onCreateSWTC() {
-
-      this.$router.push('login')
+      this.$router.push("login");
 
       // var w1 = Wallet.generate();
       // this.address = w1["address"];
       // console.log(w1["address"]);
-
-
     },
     onrequestOrderBook() {
       remote
@@ -63,4 +65,19 @@ export default {
 </script>
 
 <style lang="less">
+.main {
+  width: 100%;
+  height: 100%;
+  &-swiper {
+    width: 100%;
+  }
+}
+
+.my-swipe .van-swipe-item {
+  color: #fff;
+  font-size: 20px;
+  line-height: 150px;
+  text-align: center;
+  background-color: #39a9ed;
+}
 </style>
