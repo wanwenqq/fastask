@@ -2,6 +2,8 @@ import httpserver from './https'
 import baseurl from './baseurl';
 import qs from 'qs';
 
+const buurl = (process.env.NODE_ENV === 'production')? baseurl.mock : baseurl.dev
+
 const swtcAPI = {
 
 //     1 获取服务器列表
@@ -12,14 +14,18 @@ const swtcAPI = {
 // exHosts：交易服务器列表，默认端口为80
 // infoHosts：信息服务器列表，默认端口为80
     getconfig() {
-        return httpserver.get(`api/static/config/jc_config.json`);
+        return httpserver.get(`jcc/static/config/jc_config.json`);
     },
 
     getDepth(params){
         // console.log(params)
         // return httpserver.get('https://explorer.jccdex.cn/wallet/trans/:uuid?p=0&s=10&t=Receive,Send&w=jNC1n9WeniAErRAatYwarRUPCybozPqioW');
         return httpserver.get('https://explorer.jccdex.cn/wallet/trans/:uuid?${p}/${s}/${t}/${w}',{params:params});
+    },
+    getAlltickers(){
+        return httpserver.get(`${baseurl.mock}/api/swtc/getAlltickers`);
     }
+ 
 }
 
 export default swtcAPI;

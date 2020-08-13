@@ -1,23 +1,32 @@
 <template>
   <div id="text-item">
-    <van-grid :column-num="4" :border="false">
-      <van-grid-item icon="home-o" text="路由跳转"  @click="gotoCategory(index)"/>
-      <van-grid-item icon="home-o" text="路由跳转"  @click="gotoCategory(index)"/>
-      <van-grid-item icon="home-o" text="路由跳转"  @click="gotoCategory(index)"/>
-      <van-grid-item icon="search" text="URL 跳转" url="/vant/mobile.html" />
+    <van-grid :column-num="4" :border="true">
+      <van-grid-item v-for="(tick,index) in ticker_list"
+                     :key="tick.id"
+                     :text="tick.name"
+                     @click="gotoCategory(index)">
+        <van-cell :title="tick.name"  :label="tick.des" />
+      </van-grid-item>
     </van-grid>
   </div>
 </template>
 <script>
-import { Grid, GridItem } from "vant";
+import { Grid, GridItem,Image as VanImage,Cell} from "vant";
 export default {
-  props: {},
+  props: {
+    ticker_list:Array
+  },
   data() {
-    return {};
+    return {
+    };
   },
   components: {
     [Grid.name]: Grid,
     [GridItem.name]: GridItem,
+    [VanImage.name]: VanImage,
+    [Cell.name]: Cell,
+  },
+  mounted() {
   },
   methods: {
     gotoCategory (index) {

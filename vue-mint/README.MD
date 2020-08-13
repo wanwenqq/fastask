@@ -78,3 +78,4 @@
     3. npm install --save @swtc/lib 
     4. webpack.config.js中的devServer中配置proxy,
     5. [jcc接口](https://github.com/JCCDex/jcc_server_doc/blob/master/README.md)
+    6. 使用[mocker-api插件](https://www.npmjs.com/package/mocker-api)

@@ -6,8 +6,9 @@ const {
 const VueLoaderPlugin = require('vue-loader/lib/plugin'); //VueLoaderPlugin,注意路径一定是('vue-loader/lib/plugin')，而不是('vue-loader')，不然会报错
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') //这个插件的主要作用是实现css分离
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // 这个插件作用是对单独抽离出来的css文件进行压缩。 
-const devMode = process.env.NODE_ENV === 'production';
+const devMode = process.env.NODE_ENV === 'development';
 
+const apiMocker = require('mocker-api')
 
 
 module.exports = {
@@ -47,12 +48,15 @@ module.exports = {
         port:8080,
         hot: true,
         proxy: {
-            '/api': {
+            '/jcc': {
               target: 'https://jccdex.cn/',
-              pathRewrite: {'^/api' : ''},
+              pathRewrite: {'^/jcc' : ''},
               changeOrigin: true,     // target是域名的话，需要这个参数，
               secure: false,          // 设置支持https协议的代理
             },
+        },
+        before (app) {
+            apiMocker(app, path.resolve('./mock/mocker.js'))
         }
     },
     module: {

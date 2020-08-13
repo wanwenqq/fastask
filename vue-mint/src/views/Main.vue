@@ -8,7 +8,7 @@
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
     </div>
-    <Textitem></Textitem>
+    <Textitem :ticker_list="ticker_list"></Textitem>
     <van-divider />
     <Orderitem> </Orderitem>
   </div>
@@ -33,16 +33,22 @@ export default {
       title: "home",
       address: "",
       noticehot: "在代码阅读过程中人们说脏话的频率是衡量",
+      ticker_list:[]
     };
   },
-  mounted() {},
+  mounted: function() {
+    // this.$nextTick(function () {
+    //       this.getAlltickers() 
+    //   })
+    this.getAlltickers()
+    
+  },
   methods: {
-    onCreateSWTC() {
-      this.$router.push("login");
-
-      // var w1 = Wallet.generate();
-      // this.address = w1["address"];
-      // console.log(w1["address"]);
+    async getAlltickers() {
+      let result = await this.$api.swtcAPI.getAlltickers();
+      this.ticker_list = result.data
+      console.log(this.ticker_list);
+        
     },
     onrequestOrderBook() {
       remote

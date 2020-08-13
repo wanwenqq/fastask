@@ -6,6 +6,9 @@ const userAPI = {
     login(params) {
         console.log(params)
         return httpserver.post(`${baseurl.dev}/login`, params);
+    },
+    getUser(){
+        return httpserver.get(`${baseurl.mock}/api/user`);
     }
 }
 
