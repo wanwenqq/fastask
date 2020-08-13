@@ -31,5 +31,5 @@ const proxy = {
         {id:4,name:'更多',des:''}
     ]
   }
-  
+
   module.exports = proxy

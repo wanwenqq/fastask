@@ -1,37 +1,53 @@
 <template>
   <div id="text-item">
-    <van-grid :column-num="4" :border="true">
-      <van-grid-item v-for="(tick,index) in ticker_list"
-                     :key="tick.id"
-                     :text="tick.name"
-                     @click="gotoCategory(index)">
-        <van-cell :title="tick.name"  :label="tick.des" />
-      </van-grid-item>
-    </van-grid>
+    <van-cell-group title="cny">
+      <van-grid>
+        <van-grid-item
+          v-for="(tick,index) in ticker_list"
+          :key="tick.id"
+          :text="tick.name"
+          @click="goTicker(index)"
+        >
+          <van-cell :title="tick.name" :label="tick.des" />
+        </van-grid-item>
+      </van-grid>
+    </van-cell-group>
+    <van-cell-group title="swtc">
+      <van-grid>
+        <van-grid-item
+          v-for="(tick,index) in ticker_list"
+          :key="tick.id"
+          :text="tick.name"
+          @click="goTicker(index)"
+        >
+          <van-cell :title="tick.name" :label="tick.des" />
+        </van-grid-item>
+      </van-grid>
+    </van-cell-group>
   </div>
 </template>
 <script>
-import { Grid, GridItem,Image as VanImage,Cell} from "vant";
+import { Grid, GridItem, Image as VanImage, Cell, CellGroup } from "vant";
 export default {
   props: {
-    ticker_list:Array
+    ticker_list: Array,
   },
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     [Grid.name]: Grid,
     [GridItem.name]: GridItem,
     [VanImage.name]: VanImage,
     [Cell.name]: Cell,
+    [CellGroup.name]: CellGroup,
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
-    gotoCategory (index) {
-      this.$router.push('/login')
-    }
+    goTicker(index) {
+      console.log(index);
+      this.$router.push("/user");
+    },
   },
 };
 </script>

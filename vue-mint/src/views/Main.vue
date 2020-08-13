@@ -47,7 +47,6 @@ export default {
     async getAlltickers() {
       let result = await this.$api.swtcAPI.getAlltickers();
       this.ticker_list = result.data
-      console.log(this.ticker_list);
         
     },
     onrequestOrderBook() {
