@@ -22,25 +22,38 @@ const routes = [
         component: Home, 
         children: [
             {
-                path: '/main',
+                path: 'main',
                 name: 'main',
-                component: () => import(/* webpackChunkName: "list" */ '../views/Main.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/home/Main.vue')
             },
             {
-                path: '/data',
+                path: 'data',
                 name: 'data',
-                component: () => import(/* webpackChunkName: "list" */ '../views/Data.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/data/Data.vue')
             },
             {
-                path: '/discory',
+                path: 'discory',
                 name: 'discory',
-                component: () => import(/* webpackChunkName: "list" */ '../views/Discory.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/discory/Discory.vue')
             },
             {
-                path: '/user',
+                path: 'user',
                 name: 'user',
-                component: () => import(/* webpackChunkName: "list" */ '../views/User.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/user/User.vue'),
+                children:[
+                    // {
+                    //     path: 'usercenter',
+                    //     name: 'usercenter',
+                    //     component: () => import(/* webpackChunkName: "list" */ '../views/user/Usercenter.vue'),
+                    // }
+                    
+                ]
             },
+            {
+                path: 'usercenter',
+                name: 'usercenter',
+                component: () => import(/* webpackChunkName: "list" */ '../views/user/Usercenter.vue'),
+            }
         ],
     },
     {

@@ -23,7 +23,7 @@ export default {
     [Grid.name]: Grid,
     [GridItem.name]: GridItem,
     [CellGroup.name]: CellGroup,
-    Orderitem
+    Orderitem,
   },
   data() {
     return {
