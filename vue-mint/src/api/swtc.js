@@ -24,6 +24,9 @@ const swtcAPI = {
     },
     getAlltickers(){
         return httpserver.get(`${baseurl.mock}/api/swtc/getAlltickers`);
+    },
+    getInfos(){
+        return httpserver.get(`${baseurl.mock}/api/swtc/getInfos`);
     }
  
 }

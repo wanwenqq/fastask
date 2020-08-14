@@ -46,6 +46,7 @@
   "dependencies": {
     "@swtc/lib": "^1.0.13",
     "axios": "^0.19.2",
+    "echarts": "^4.8.0",
     "vant": "^2.9.4",
     "vue": "^2.6.11",
     "vue-router": "^3.3.4",

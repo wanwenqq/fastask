@@ -29,7 +29,9 @@ const proxy = {
         {id:2,name:'jcc',des:'0.123'},
         {id:3,name:'moac',des:'1.234'},
         {id:4,name:'更多',des:''}
-    ]
+    ],
+    'GET /api/swtc/getInfos':
+        {new:'0.123',hight:'0.122',low:'0.111',volume:'123456',amo:'432',trad:'4.3'},
   }
 
   module.exports = proxy
