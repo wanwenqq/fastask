@@ -1,20 +1,31 @@
 import Vue from 'vue'
 import Vuex from 'vuex';
 
+import {PUTUSERINFO} from './types.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        lists: [],
-        acitve:0
+        counter:100,
+        student:[],
+        userinfo:{}
     },
     mutations: {
-        addItem(state, value) {
-            state.lists.push(value);
-        },
-        addActive(state,value){
-            state.acitve = value;
-        }
+        increase(state){
+            state.counter++
+          },
+          decrease(state){
+            state.counter--
+          },
+          increateCounter(state,count){
+            state.counter += count
+          },
+          increateStu(state,stu){
+            state.student.push(stu)
+          },
+          [PUTUSERINFO](state,value){
+              state.userinfo = value
+          }
     },
     actions:{
         //功能同mutations,不过可以做异步操作
@@ -24,8 +35,8 @@ export default new Vuex.Store({
         
     },
     getters:{
-        getActive(state){
-            return state.acitve;
+        getUserinfo(state){
+            return state.userinfo
         }
     }
 

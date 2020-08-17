@@ -34,10 +34,14 @@ export default {
   },
   data() {
     return {
-      istoken: true,
+      istoken: false,
+      userinfo:{}
     };
   },
-  mounted() {},
+  mounted() {
+    this.istoken = this.$store.state.userinfo.token===undefined?false:true
+    console.log(this.istoken)
+  },
   methods: {
     goPage(name){
       this.$router.push({name})
