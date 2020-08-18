@@ -32,6 +32,16 @@ const proxy = {
     ],
     'GET /api/swtc/getInfos':
         {new:'0.123',hight:'0.122',low:'0.111',volume:'123456',amo:'432',trad:'4.3'},
+    
+    'GET /api/swtc/slist':[
+        {id:1,address:'11111111111111111111'},
+        {id:2,address:'1111111112222111111'},
+        {id:3,address:'111111333311111'},
+        {id:4,address:'1111114444111111111'},
+        {id:5,address:'11111115555511111111'},
+        {id:6,address:'1111111166666666661111111'},
+    ],
+
   }
 
   module.exports = proxy

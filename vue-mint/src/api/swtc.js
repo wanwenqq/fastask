@@ -27,6 +27,9 @@ const swtcAPI = {
     },
     getInfos(){
         return httpserver.get(`${baseurl.mock}/api/swtc/getInfos`);
+    },
+    getSlist(){
+        return httpserver.get(`${baseurl.mock}/api/swtc/slist`);
     }
  
 }

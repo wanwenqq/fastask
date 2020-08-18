@@ -34,7 +34,14 @@ const routes = [
             {
                 path: 'discory',
                 name: 'discory',
-                component: () => import(/* webpackChunkName: "list" */ '../views/discory/Discory.vue')
+                component: () => import(/* webpackChunkName: "list" */ '../views/discory/Discory.vue'),
+                // children:[
+                //     {
+                //         path: 'slist',
+                //         name: 'slist',
+                //         component: () => import(/* webpackChunkName: "list" */ '../views/discory/Slist.vue'),
+                //     }
+                // ]
             },
             {
                 path: 'user',
@@ -53,13 +60,24 @@ const routes = [
                 path: 'usercenter',
                 name: 'usercenter',
                 component: () => import(/* webpackChunkName: "list" */ '../views/user/Usercenter.vue'),
-            }
+            },
+            
         ],
     },
     {
         path: '/login',
         name: 'login',
         component: () => import(/* webpackChunkName: "home" */ '../views/Login.vue')
+    },
+    {
+        path: 'slist',
+        name: 'slist',
+        component: () => import(/* webpackChunkName: "list" */ '../views/discory/Slist.vue'),
+    },
+    {
+        path: 'orderlist',
+        name: 'orderlist',
+        component: () => import(/* webpackChunkName: "list" */ '../views/discory/Orderlist.vue'),
     },
     {
         path: '*',
