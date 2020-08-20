@@ -30,6 +30,9 @@ const swtcAPI = {
     },
     getSlist(){
         return httpserver.get(`${baseurl.mock}/api/swtc/slist`);
+    },
+    getSwtctop(){
+        return httpserver.post(`${baseurl.dev}/swtctop`);
     }
  
 }

@@ -62,3 +62,18 @@ class Swtc(db.Model):
             'vcc':self.vcc
         }
         return json_swtc
+
+
+
+class swtctop(db.Model):
+    __tablename__ = 'swtc_address'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    address = db.Column(db.String(256), nullable=False)
+
+
+    def to_json(self):
+        json_swtc = {
+            'id':self.id,
+            'address':self.address,
+        }
+        return json_swtc

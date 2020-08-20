@@ -12,17 +12,17 @@
       <div class="order">排行</div>
       <div class="address">地址</div>
     </div>
-    <hr style="margin:1px 0"/>
+    <hr style="margin:1px 0" />
     <ul>
       <li class="title" v-for="item in lists" :key="item.id">
         <div class="order">{{item.id}}</div>
-        <div class="address">{{item.name}}</div>
+        <div class="address item" @click="goPage(item.address)">{{item.address}}</div>
       </li>
     </ul>
   </div>
 </template>
 <script>
-import { NavBar,Divider } from "vant";
+import { NavBar, Divider } from "vant";
 export default {
   name: "orderlist",
   components: {
@@ -31,20 +31,28 @@ export default {
   },
   data() {
     return {
-      lists: [
-        { id: 1, name: "de_modules/vue-loader/lib/inde" },
-        { id: 2, name: "2x" },
-      ],
+      lists: [],
     };
+  },
+  mounted() {
+    this.loadOrderlist();
   },
   methods: {
     onClickLeft() {
       this.$router.back();
     },
     onClickRight() {},
-    loadOrderlist() {
-      this.lists.push({ id: 100, name: "100x" });
+    async loadOrderlist() {
+      let result = await this.$api.swtcAPI.getSwtctop();
+      console.log("swtctop", result);
+      this.lists = result.data.data.datas;
     },
+    goPage(name){
+      // url = 'https://swtcscan.jccdex.cn/#/wallet/?wallet='+name
+      console.log('https://swtcscan.jccdex.cn/#/wallet/?wallet='+name)
+      // this.$router.push({url})
+      window.open('https://swtcscan.jccdex.cn/#/wallet/?wallet='+name) 
+    }
   },
 };
 </script>
@@ -58,14 +66,19 @@ export default {
     flex-direction: row;
     text-align: center;
     line-height: 30px;
-    padding: 0 0;
-    .order{
-        width: 20%;
-        height: 30px;
+    margin: 0 30px;
+    box-shadow: 0 1px 0 #d1d9e6;
+    .order {
+      width: 20%;
+      height: 30px;
     }
-    .address{
-        width: 80%;
-        height: 30px;
+    .address {
+      width: 80%;
+      height: 30px;
+    }
+    .item {
+      font-size: 12px;
+      text-align: left;
     }
   }
 }
