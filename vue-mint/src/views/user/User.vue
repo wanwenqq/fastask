@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <van-cell-group>
-      <van-cell style="background-color: #3bba63;color:#FFF;" is-link center>
+      <van-cell style="color:#FFF;" is-link center>
         <div class="user-msg">
           <div class="user-logined"  v-if="istoken" @click="goPage('usercenter')">
             <img src="../../assets/home-normal.png" alt />
@@ -67,8 +67,8 @@ export default {
       display: flex;
       align-items: center;
       img{
-        width: 100px;
-        height: 100px;
+        width: 30px;
+        height: 30px;
       }
     }
   }

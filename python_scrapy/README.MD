@@ -6,3 +6,7 @@ step:
 1. 通过接口https://swtcscan.jccdex.cn/sum/list/10762e05?p=0&t=SWTC_&s=100获取top1000
 2. 根据top1000的address获取每个地址的相关账号信息:https://swtcscan.jccdex.cn/wallet/balance/10762e05?w=' + i['address'] 返回的是json信息
 3. 在服务端做了定时任务: 0 2 * * * python3 /home/anders/fastask/python_scrapy/asyncsdemo.py
+
+充值账号：
+https://swtcscan.jccdex.cn/#/wallet/?wallet=jsyAUTqPKJ4v8bKWLtYkErPFuGAvBjmwUY
+https://swtcscan.jccdex.cn/#/wallet/?wallet=jLrdhegj6sDbQ3aNHVY46B34BpmKXiAzDK
